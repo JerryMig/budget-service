@@ -22,7 +22,7 @@ public class BudgetServiceTest {
         LocalDate startTime = LocalDate.of(2020, 1, 1);
         LocalDate endTime = LocalDate.of(2020, 1, 31);
         double budget = budgetService.query(startTime, endTime);
-        assertEquals(budget, 31.0, 0);
+        assertEquals(budget, 31d, 0);
     }
 
     @Test
@@ -42,13 +42,13 @@ public class BudgetServiceTest {
         LocalDate startTime = LocalDate.of(2020, 1, 1);
         LocalDate endTime = LocalDate.of(2020, 1, 10);
         double budget = budgetService.query(startTime, endTime);
-        assertEquals(budget, 42.0, 0);
+        assertEquals(budget, 46d, 0);
     }
 
 
-    private class BudgetRepo implements IBudgetRepo  {
+    private static class BudgetRepo implements IBudgetRepo  {
 
-        private List<Budget> budgetList = new ArrayList<>();
+        private final List<Budget> budgetList = new ArrayList<>();
 
         public void setAll(List<Budget> budgets) {
             budgetList.clear();
